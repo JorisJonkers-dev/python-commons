@@ -6,14 +6,36 @@ tasks:
     cmd: task --list
     silent: true
 
+  sync:
+    desc: Install the locked dependencies
+    cmd: uv sync --frozen
+
   lint:
     desc: All linters
+    deps: [sync]
     cmds:
+      - task: lint:python
       - task: lint:actions
+
+  lint:python:
+    desc: ruff, ruff format and mypy --strict
+    cmds:
+      - uv run ruff check .
+      - uv run ruff format --check .
+      - uv run mypy
 
   lint:actions:
     desc: actionlint on every workflow
     cmd: actionlint
+
+  test:
+    desc: pytest with a branch coverage gate (pyproject's fail_under)
+    deps: [sync]
+    cmd: uv run pytest --cov --cov-report=term-missing
+
+  build:
+    desc: Build the wheel and sdist consumers install
+    cmd: uv build --quiet
 
   secrets:
     desc: Scan the working tree for secrets
@@ -23,4 +45,12 @@ tasks:
     desc: Everything CI runs on a pull request
     cmds:
       - task: lint
+      - task: test
+      - task: build
       - task: secrets
+
+  fix:
+    desc: Apply formatters and autofixes
+    cmds:
+      - uv run ruff format .
+      - uv run ruff check --fix .
