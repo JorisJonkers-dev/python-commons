@@ -1,6 +1,6 @@
 [project]
 name = "jorisjonkers-commons"
-version = "0.0.0"
+version = "0.1.0"
 description = "Shared Python packages for estate services."
 readme = "README.md"
 requires-python = ">=3.11"
