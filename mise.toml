@@ -1,0 +1,5 @@
+# Toolchain for local work and CI (jdx/mise-action). `mise install` is the only setup step.
+[tools]
+task = "3.53.1"
+actionlint = "1.7.12"
+gitleaks = "8.30.1"
