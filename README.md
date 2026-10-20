@@ -27,13 +27,16 @@ JWT access token against the Issuer's keys or introspects an opaque token, keepi
 
 ```python
 from jorisjonkers_commons.identity import (
-    PrincipalReader, principal_middleware, require_recent_two_factor, require_role,
+    PrincipalReader,
+    principal_middleware,
+    require_recent_two_factor,
+    require_role,
 )
 
 reader = PrincipalReader("https://auth.jorisjonkers.dev", "wiki", client_secret=secret)
-app = principal_middleware(app, reader)          # 401 when refused, 503 when identity is down
-admin = require_role("admin")(admin_app)         # 403 without the role
-payments = require_recent_two_factor(5)(pay_app) # 303 to the Gate's step-up, 403 for tokens
+app = principal_middleware(app, reader)  # 401 when refused, 503 when identity is down
+admin = require_role("admin")(admin_app)  # 403 without the role
+payments = require_recent_two_factor(5)(pay_app)  # 303 to the Gate's step-up, 403 for tokens
 ```
 
 The middleware and the helpers are plain ASGI, so they wrap a Starlette or FastAPI app or any one
