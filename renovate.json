@@ -1,4 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>JorisJonkers-dev/renovate-config"]
+  "extends": ["github>JorisJonkers-dev/renovate-config"],
+  "packageRules": [
+    {
+      "description": "This is a library: runtime dependency ranges and the supported Python range stay ranges, only the build backend is pinned.",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["project.dependencies", "requires-python"],
+      "rangeStrategy": "update-lockfile"
+    },
+    {
+      "description": "requires-python states which interpreters the library supports; it is never pinned to one release.",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["requires-python"],
+      "enabled": false
+    }
+  ]
 }
