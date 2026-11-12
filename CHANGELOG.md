@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.2](https://github.com/JorisJonkers-dev/python-commons/compare/v0.1.1...v0.1.2) (2026-11-12)
+
+
+### Bug Fixes
+
+* **hygiene:** never cancel a run of the required hygiene checks ([#21](https://github.com/JorisJonkers-dev/python-commons/issues/21)) ([e884e31](https://github.com/JorisJonkers-dev/python-commons/commit/e884e311ce8c676f149d167b2d5c9ddbad4e82ef))
+
+
+### Documentation
+
+* add AGENTS.md ([#18](https://github.com/JorisJonkers-dev/python-commons/issues/18)) ([43dd1ba](https://github.com/JorisJonkers-dev/python-commons/commit/43dd1ba907fa58321141be13d270fbc89e523a84))
+
 ## [0.1.1](https://github.com/JorisJonkers-dev/python-commons/compare/v0.1.0...v0.1.1) (2026-11-11)
 
 
